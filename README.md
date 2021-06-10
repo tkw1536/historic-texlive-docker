@@ -5,6 +5,7 @@ They were originally intended for use with LaTeXML tests.
 
 Supported TexLive Versions:
 
+- 2008
 - 2009
 
 ## Building
