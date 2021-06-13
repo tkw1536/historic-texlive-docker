@@ -7,6 +7,17 @@ Supported TexLive Versions:
 
 - 2008
 - 2009
+- 2010
+- 2011
+- 2012
+- 2013
+- 2014
+- 2015
+- 2016
+- 2017
+- 2018
+- 2019
+- 2020
 
 ## Building
 
@@ -30,6 +41,8 @@ To get a new (default settings) profile, download the iso image by hand (e.g. by
 ```bash
 cd /installer/; echo i | perl ./install-tl -repository /installer/; cat /usr/local/texlive/*/tlpkg/texlive.profile
 ```
+
+This creation process is also automated, see `utils/make_profile.sh`. 
 
 ## LICENSE
 
