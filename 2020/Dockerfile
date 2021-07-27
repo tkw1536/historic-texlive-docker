@@ -1,5 +1,6 @@
 ARG HISTORIC_MIRROR=ftp://tug.org/historic/
-FROM debian:buster as base
+ARG PERL_VERSION=5.32.1
+FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} as base
 
 FROM base as setup
 
