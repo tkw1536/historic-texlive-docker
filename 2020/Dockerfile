@@ -19,8 +19,6 @@ RUN wget ${HISTORIC_MIRROR}/systems/texlive/2020/texlive2020.iso \
     && bsdtar xvpC /installer/ -f texlive2020.iso \
     && rm texlive2020.iso
 
-RUN cd /installer/; echo i | perl ./install-tl -repository /installer/; cat /usr/local/texlive/*/tlpkg/texlive.profile
-
 # install texlive in the installer directory
 ADD texlive-2020.profile /installer/texlive-2020.profile
 RUN cd /installer/ \

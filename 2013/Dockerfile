@@ -19,8 +19,6 @@ RUN wget ${HISTORIC_MIRROR}/systems/texlive/2013/texlive2013.iso \
     && bsdtar xvpC /installer/ -f texlive2013.iso \
     && rm texlive2013.iso
 
-RUN cd /installer/; echo i | perl ./install-tl -repository /installer/; cat /usr/local/texlive/*/tlpkg/texlive.profile
-
 # install texlive in the installer directory
 ADD texlive-2013.profile /installer/texlive-2013.profile
 RUN cd /installer/ \

@@ -19,8 +19,6 @@ RUN wget ${HISTORIC_MIRROR}/systems/texlive/2018/texlive2018.iso \
     && bsdtar xvpC /installer/ -f texlive2018.iso \
     && rm texlive2018.iso
 
-RUN cd /installer/; echo i | perl ./install-tl -repository /installer/; cat /usr/local/texlive/*/tlpkg/texlive.profile
-
 # install texlive in the installer directory
 ADD texlive-2018.profile /installer/texlive-2018.profile
 RUN cd /installer/ \
