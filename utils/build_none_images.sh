@@ -13,6 +13,7 @@ function main() {
     clear_images
     build_images
     tag_images
+    push_images
 }
 
 function image_name() {
@@ -32,6 +33,11 @@ function image_name() {
 function clear_images() {
     echo "$ docker image ls --filter reference=\"$TAG_PATTERN\"  --format='{{.Repository}}:{{.Tag}}' | xargs -r docker rmi"
     docker image ls --filter reference="$TAG_PATTERN"  --format='{{.Repository}}:{{.Tag}}' | xargs -r docker rmi
+}
+
+function push_images() {
+    echo "$ docker image ls --filter reference=\"$TAG_PATTERN\"  --format='{{.Repository}}:{{.Tag}}' | xargs -n 1 docker push"
+    docker image ls --filter reference=\"$TAG_PATTERN\"  --format='{{.Repository}}:{{.Tag}}' | xargs -n 1 docker push
 }
 
 # build all image versions
