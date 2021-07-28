@@ -1,5 +1,5 @@
 ARG PERL_VERSION=perl-5.34.0
-FROM debian:buster as base
+FROM debian:buster
 
 ARG PERL_VERSION
 ENV HOME=/root \
@@ -17,7 +17,6 @@ RUN mkdir -p ${PERLBREW_ROOT} ${HOME} && \
         wget \
         perl \
         && \
-    apt-get clean && \
     # install perlbrew itself
     wget -qO- http://install.perlbrew.pl | bash && \
     # initalize perlbrew
@@ -26,8 +25,11 @@ RUN mkdir -p ${PERLBREW_ROOT} ${HOME} && \
     # install perl, use it, and install cpanm
     perlbrew install --notest -v $PERL_VERSION && \
     perlbrew switch $PERL_VERSION && \
-    perlbrew install-cpanm --notest
-
+    perlbrew install-cpanm --notest && \
+    # remove unuused stuff for apt + perlbrew
+    rm -rf "${PERLBREW_ROOT}/build" "${PERLBREW_ROOT}/dist" "${PERLBREW_ROOT}/*.log" && \
+    apt-get purge -y --auto-remove build-essential && \
+    rm -rf /var/lib/apt/lists/*
 
 # properly set the environment variables
 ARG PERL_VERSION
