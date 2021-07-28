@@ -8,7 +8,9 @@ FROM base as setup
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
-        bsdtar
+        bsdtar \
+        perl \
+        wget
 
 # Download the installer, and put all the files into /installer/
 ARG HISTORIC_MIRROR
