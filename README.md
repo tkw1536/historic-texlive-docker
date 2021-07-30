@@ -23,13 +23,26 @@ Supported TexLive Versions:
 ## Images
 
 The Images are available at [ghcr.io/tkw1536/texlive-docker](ghcr.io/tkw1536/texlive-docker). 
-The supported tags are `${texlive}-${perl}`, for instance: `ghcr.io/tkw1536/texlive-docker:2020-5.34` will give you TeXLive 2020 with perl 5.34
+The supported tags are `${texlive}-${perl}`, for instance: `ghcr.io/tkw1536/texlive-docker:2020-5.30` will give you TeXLive 2020 with perl 5.30.
+Not all combinations are available, see the list below for available images.
 
 Versions With TeXLive available:
 
-(tbd)
+- `2020-5.32.1`, `2020-5.32`, `2020-5`, `2020`, `latest`
+- `2019-5.30.3`, `2019-5.30`, `2019-5`, `2019`
+- `2018-5.28.3`, `2018-5.28`, `2018-5`, `2018`
+- `2017-5.26.3`, `2017-5.26`, `2017-5`, `2017`
+- `2016-5.24.4`, `2016-5.24`, `2016-5`, `2016`
+- `2015-5.22.4`, `2015-5.22`, `2015-5`, `2015`
+- `2014-5.20.3`, `2014-5.20`, `2014-5`, `2014`
+- `2013-5.18.4`, `2013-5.18`, `2013-5`, `2013`
+- `2012-5.16.3`, `2012-5.16`, `2012-5`, `2012`
+- `2011-5.14.4`, `2011-5.14`, `2011-5`, `2011`
+- `2010-5.12.5`, `2010-5.12`, `2010-5`, `2010`
+- `2009-5.10.1`, `2009-5.10`, `2009-5`, `2009`
+- `2008-5.10.1`, `2008-5.10`, `2008-5`, `2008`
 
-Perl Only Tags (work in progress):
+Perl Only Tags:
 
  - `none-5.34.0`, `none-5.34`, `none-5`, `none`
  - `none-5.32.1`, `none-5.32`
@@ -47,10 +60,16 @@ Perl Only Tags (work in progress):
 
 ## Building
 
-To build a docker image, simply `cd` into the directory of the corresponding year and use:
+To build a single docker image, simply `cd` into the directory of the corresponding year and use:
 
 ```
 docker build --build-arg PERL_VERSION=perl-5.10.1 --build-arg HISTORIC_MIRROR=ftp://tug.org/historic/ -t texlive .
+```
+
+or for an image with only perl:
+
+```
+docker build --build-arg PERL_VERSION=perl-5.10.1 -t texlive:none-5.10.1 .
 ```
 
 By default, this will use the main [Historic archive of TeX material](https://tug.org/historic/) mirror, you may exchange it to any other mirror listed. 
@@ -63,6 +82,13 @@ To build all images, first build all the `none` docker images, then build the re
 To build the `none` images, use:
 
     bash build_none_images.sh
+
+To build the `texlive` images, use:
+
+    bash build_tex_images.sh
+
+Be warned that either can take up several gigabytes of space per image.
+It is not recommended to run these scripts without modification, instead modify them to only build and push the images you want.
 
 ## Adding a new version
 
