@@ -23,12 +23,13 @@ Supported TexLive Versions:
 ## Images
 
 The Images are available at [ghcr.io/tkw1536/texlive-docker](ghcr.io/tkw1536/texlive-docker). 
-The supported tags are `${texlive}-${perl}`, for instance: `ghcr.io/tkw1536/texlive-docker:2020-5.30` will give you TeXLive 2020 with perl 5.30.
+The supported tags are `${texlive}-${perl}`, for instance: `ghcr.io/tkw1536/texlive-docker:2021-5.34` will give you TeXLive 2021 with perl 5.34.
 Not all combinations are available, see the list below for available images.
 
 Versions With TeXLive available:
 
-- `2020-5.32.1`, `2020-5.32`, `2020-5`, `2020`, `latest`
+- `2021-5.34.0`, `2021-5.34`, `2021-5`, `2021`, `latest`
+- `2020-5.32.1`, `2020-5.32`, `2020-5`, `2020`
 - `2019-5.30.3`, `2019-5.30`, `2019-5`, `2019`
 - `2018-5.28.3`, `2018-5.28`, `2018-5`, `2018`
 - `2017-5.26.3`, `2017-5.26`, `2017-5`, `2017`
