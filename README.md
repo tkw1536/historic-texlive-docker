@@ -18,6 +18,7 @@ Supported TexLive Versions:
 - TeXLive 2018, Perl 5.28
 - TeXLive 2019, Perl 5.30
 - TeXLive 2020, Perl 5.32
+- TeXLive 2021, Perl 5.34
 - No TeXLive, Perl 5.10 - 5.34 (see below)
 
 ## Images
