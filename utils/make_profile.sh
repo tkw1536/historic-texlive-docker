@@ -8,7 +8,7 @@ fi;
 TAGNAME="historic-texlive-profile"
 
 docker build --no-cache --build-arg HISTORIC_MIRROR=https://pi.kwarc.info/historic/ --build-arg HISTORIC_YEAR=${YEAR} -t "$TAGNAME" - 1>&2 <<"END"
-FROM debian:buster as base
+FROM debian:trixie as base
 
 FROM base as setup
 

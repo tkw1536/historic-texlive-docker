@@ -1,5 +1,5 @@
 ARG PERL_VERSION=perl-5.34.0
-FROM debian:buster
+FROM debian:trixie
 
 ARG PERL_VERSION
 ENV HOME=/root \

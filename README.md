@@ -45,8 +45,12 @@ Versions With TeXLive available:
 - `2008-5.10.1`, `2008-5.10`, `2008-5`, `2008`
 
 Perl Only Tags:
-
- - `none-5.34.0`, `none-5.34`, `none-5`, `none`
+ - `none-5.42.0`, `none-5.42`, `none-5`, `none`
+ - `none-5.40.2`, `none-5.40`
+ - `none-5.38.4`, `none-5.38`
+ - `none-5.36.3`, `none-5.36`
+ - `none-5.34.3`, `none-5.34`
+ - `none-5.34.3`, `none-5.34`
  - `none-5.32.1`, `none-5.32`
  - `none-5.30.3`, `none-5.30`
  - `none-5.28.3`, `none-5.28`

@@ -42,7 +42,7 @@ function push_images() {
 
 # build all image versions
 function build_images() {
-    docker pull debian:buster
+    docker pull debian:trixie
     while IFS= read -r version; do
        build_image "$version"
     done << EOF
@@ -58,7 +58,11 @@ function build_images() {
 5.28.3
 5.30.3
 5.32.1
-5.34.0
+5.34.3
+5.36.3
+5.38.4
+5.40.2
+5.42.0
 EOF
 }
 
@@ -91,7 +95,11 @@ function tag_images() {
 5.28.3      5.28
 5.30.3      5.30
 5.32.1      5.32
-5.34.0      5.34    5
+5.34.3      5.34
+5.36.3      5.36
+5.38.4      5.38
+5.40.2      5.40
+5.42.0      5.42      5
 EOF
     tag_image "5" ""
 }
