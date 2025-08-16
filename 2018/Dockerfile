@@ -1,14 +1,14 @@
 ARG HISTORIC_MIRROR=ftp://tug.org/historic/
 ARG PERL_VERSION=5.28.3
-FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} as base
+FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} AS base
 
-FROM base as setup
+FROM base AS setup
 
 # install setup dependencies
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
-        bsdtar \
+        libarchive-tools \
         perl \
         wget
 
@@ -25,7 +25,7 @@ RUN cd /installer/ \
     && perl ./install-tl -profile texlive-2018.profile
 
 # copy image for the final tag
-FROM base as final
+FROM base AS final
 COPY --from=setup /usr/local/texlive/2018/ /usr/local/texlive/2018/
 
 # setup environment variables

@@ -8,15 +8,15 @@ fi;
 TAGNAME="historic-texlive-profile"
 
 docker build --no-cache --build-arg HISTORIC_MIRROR=https://pi.kwarc.info/historic/ --build-arg HISTORIC_YEAR=${YEAR} -t "$TAGNAME" - 1>&2 <<"END"
-FROM debian:trixie as base
+FROM debian:trixie AS base
 
-FROM base as setup
+FROM base AS setup
 
 # install setup dependencies
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
-        bsdtar \
+        libarchive-tools \
         perl \
         wget
 
@@ -32,5 +32,5 @@ RUN wget ${HISTORIC_MIRROR}/systems/texlive/${HISTORIC_YEAR}/texlive${HISTORIC_Y
 RUN cd /installer/; echo i | perl ./install-tl -repository /installer/
 END
 
-docker run -ti --rm "$TAGNAME" cat /usr/local/texlive/${YEAR}/tlpkg/texlive.profile
+docker run -ti --rm "$TAGNAME" cat /usr/local/texlive/${YEAR}/tlpkg/texlive.profile > "texlive-${YEAR}.profile"
 docker image rm "$TAGNAME" 1>&2

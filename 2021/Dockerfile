@@ -1,20 +1,20 @@
-ARG CTAN_MIRROR=https://mirror.ctan.org
-ARG PERL_VERSION=5.34.0
-FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} as base
+ARG HISTORIC_MIRROR=ftp://tug.org/historic/
+ARG PERL_VERSION=5.34.4
+FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} AS base
 
-FROM base as setup
+FROM base AS setup
 
 # install setup dependencies
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
-        bsdtar \
+        libarchive-tools \
         perl \
         wget
 
 # Download the installer, and put all the files into /installer/
-ARG CTAN_MIRROR
-RUN wget ${CTAN_MIRROR}/systems/texlive/Images/texlive2021.iso \
+ARG HISTORIC_MIRROR
+RUN wget ${HISTORIC_MIRROR}/systems/texlive/2021/texlive2021.iso \
     && mkdir /installer/ \
     && bsdtar xvpC /installer/ -f texlive2021.iso \
     && rm texlive2021.iso
@@ -25,7 +25,7 @@ RUN cd /installer/ \
     && perl ./install-tl -profile texlive-2021.profile
 
 # copy image for the final tag
-FROM base as final
+FROM base AS final
 COPY --from=setup /usr/local/texlive/2021/ /usr/local/texlive/2021/
 
 # setup environment variables

@@ -1,5 +1,5 @@
 ARG HISTORIC_MIRROR=ftp://tug.org/historic/
-ARG PERL_VERSION=5.30.3
+ARG PERL_VERSION=5.38.4
 FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} AS base
 
 FROM base AS setup
@@ -14,21 +14,21 @@ RUN apt-get update \
 
 # Download the installer, and put all the files into /installer/
 ARG HISTORIC_MIRROR
-RUN wget ${HISTORIC_MIRROR}/systems/texlive/2019/texlive2019.iso \
+RUN wget ${HISTORIC_MIRROR}/systems/texlive/2023/texlive2023.iso \
     && mkdir /installer/ \
-    && bsdtar xvpC /installer/ -f texlive2019.iso \
-    && rm texlive2019.iso
+    && bsdtar xvpC /installer/ -f texlive2023.iso \
+    && rm texlive2023.iso
 
 # install texlive in the installer directory
-ADD texlive-2019.profile /installer/texlive-2019.profile
+ADD texlive-2021.profile /installer/texlive-2023.profile
 RUN cd /installer/ \
-    && perl ./install-tl -profile texlive-2019.profile
+    && perl ./install-tl -profile texlive-2023.profile
 
 # copy image for the final tag
 FROM base AS final
-COPY --from=setup /usr/local/texlive/2019/ /usr/local/texlive/2019/
+COPY --from=setup /usr/local/texlive/2021/ /usr/local/texlive/2021/
 
 # setup environment variables
-ENV MANPATH="/usr/local/texlive/2019/texmf/doc/man:$MANPATH"
-ENV INFOPATH="/usr/local/texlive/2019/texmf/doc/info:$MANPATH"
-ENV PATH="/usr/local/texlive/2019/bin/x86_64-linux:$PATH"
+ENV MANPATH="/usr/local/texlive/2023/texmf/doc/man:$MANPATH"
+ENV INFOPATH="/usr/local/texlive/2023/texmf/doc/info:$MANPATH"
+ENV PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
