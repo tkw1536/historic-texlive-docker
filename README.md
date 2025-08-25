@@ -1,7 +1,7 @@
 # texlive-docker
 
 This repository contains docker images that contain a specific TexLive and Perl versions.
-All images are based on debian trixe.
+Newer images are based on debian trixe, older images are based on older Debian Versions.
 The image was originally intended to be used only with [LaTeXML](https://github.com/brucemiller/LaTeXML) tests, but are general purpose. 
 
 Supported TexLive Versions:
@@ -20,7 +20,10 @@ Supported TexLive Versions:
 - TeXLive 2019, Perl 5.30
 - TeXLive 2020, Perl 5.32
 - TeXLive 2021, Perl 5.34
-- No TeXLive, Perl 5.10 - 5.34 (see below)
+- TexLive 2022, Perl 5.36
+- TexLive 2023, Perl 5.38
+- TexLive 2024, Perl 5.38
+- No TeXLive, Perl 5.10 - 5.42 (see below)
 
 ## Images
 
@@ -29,8 +32,10 @@ The supported tags are `${texlive}-${perl}`, for instance: `ghcr.io/tkw1536/texl
 Not all combinations are available, see the list below for available images.
 
 Versions With TeXLive available:
-
-- `2021-5.34.3`, `2021-5.34`, `2021-5`, `2021`, `latest`
+- `2024-5.38.4`, `2024-5.38`, `2024-5`, `2024`, `latest`
+- `2023-5.38.4`, `2023-5.38`, `2023-5`, `2023`
+- `2022-5.36.3`, `2022-5.36`, `2022-5`, `2022`
+- `2021-5.34.3`, `2021-5.34`, `2021-5`, `2021`
 - `2020-5.32.1`, `2020-5.32`, `2020-5`, `2020`
 - `2019-5.30.3`, `2019-5.30`, `2019-5`, `2019`
 - `2018-5.28.3`, `2018-5.28`, `2018-5`, `2018`

@@ -20,13 +20,13 @@ RUN wget ${HISTORIC_MIRROR}/systems/texlive/2024/texlive2024.iso \
     && rm texlive2024.iso
 
 # install texlive in the installer directory
-ADD texlive-2021.profile /installer/texlive-2024.profile
+ADD texlive-2024.profile /installer/texlive-2024.profile
 RUN cd /installer/ \
     && perl ./install-tl -profile texlive-2024.profile
 
 # copy image for the final tag
 FROM base AS final
-COPY --from=setup /usr/local/texlive/2021/ /usr/local/texlive/2021/
+COPY --from=setup /usr/local/texlive/2024/ /usr/local/texlive/2024/
 
 # setup environment variables
 ENV MANPATH="/usr/local/texlive/2024/texmf/doc/man:$MANPATH"

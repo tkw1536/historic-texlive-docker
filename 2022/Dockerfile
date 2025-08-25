@@ -1,5 +1,5 @@
 ARG HISTORIC_MIRROR=ftp://tug.org/historic/
-ARG PERL_VERSION=5.36.2
+ARG PERL_VERSION=5.36.3
 FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} AS base
 
 FROM base AS setup
@@ -20,13 +20,13 @@ RUN wget ${HISTORIC_MIRROR}/systems/texlive/2022/texlive2022.iso \
     && rm texlive2022.iso
 
 # install texlive in the installer directory
-ADD texlive-2021.profile /installer/texlive-2022.profile
+ADD texlive-2022.profile /installer/texlive-2022.profile
 RUN cd /installer/ \
     && perl ./install-tl -profile texlive-2022.profile
 
 # copy image for the final tag
 FROM base AS final
-COPY --from=setup /usr/local/texlive/2021/ /usr/local/texlive/2021/
+COPY --from=setup /usr/local/texlive/2022/ /usr/local/texlive/2022/
 
 # setup environment variables
 ENV MANPATH="/usr/local/texlive/2022/texmf/doc/man:$MANPATH"

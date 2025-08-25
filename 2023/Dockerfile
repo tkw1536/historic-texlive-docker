@@ -20,13 +20,13 @@ RUN wget ${HISTORIC_MIRROR}/systems/texlive/2023/texlive2023.iso \
     && rm texlive2023.iso
 
 # install texlive in the installer directory
-ADD texlive-2021.profile /installer/texlive-2023.profile
+ADD texlive-2023.profile /installer/texlive-2023.profile
 RUN cd /installer/ \
     && perl ./install-tl -profile texlive-2023.profile
 
 # copy image for the final tag
 FROM base AS final
-COPY --from=setup /usr/local/texlive/2021/ /usr/local/texlive/2021/
+COPY --from=setup /usr/local/texlive/2023/ /usr/local/texlive/2023/
 
 # setup environment variables
 ENV MANPATH="/usr/local/texlive/2023/texmf/doc/man:$MANPATH"

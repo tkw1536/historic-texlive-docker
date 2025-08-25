@@ -1,5 +1,5 @@
 ARG HISTORIC_MIRROR=ftp://tug.org/historic/
-ARG PERL_VERSION=5.34.4
+ARG PERL_VERSION=5.34.3
 FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} AS base
 
 FROM base AS setup
