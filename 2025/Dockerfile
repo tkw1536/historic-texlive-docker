@@ -1,6 +1,6 @@
-ARG CTAN_MIRROR=https://mirror.ctan.org
+ARG CTAN_MIRROR=https://ftp.fau.de/ctan/
 ARG PERL_VERSION=5.42.0
-FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} as base
+FROM ghcr.io/tkw1536/texlive-docker:none-${PERL_VERSION} AS base
 
 FROM base AS setup
 
@@ -8,7 +8,7 @@ FROM base AS setup
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
-        bsdtar \
+        libarchive-tools \
         perl \
         wget
 

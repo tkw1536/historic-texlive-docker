@@ -23,6 +23,7 @@ Supported TexLive Versions:
 - TexLive 2022, Perl 5.36
 - TexLive 2023, Perl 5.38
 - TexLive 2024, Perl 5.38
+- TexLive 2025, Perl 5.42
 - No TeXLive, Perl 5.10 - 5.42 (see below)
 
 ## Images
@@ -32,7 +33,8 @@ The supported tags are `${texlive}-${perl}`, for instance: `ghcr.io/tkw1536/texl
 Not all combinations are available, see the list below for available images.
 
 Versions With TeXLive available:
-- `2024-5.38.4`, `2024-5.38`, `2024-5`, `2024`, `latest`
+- `2025-5.42.0`, `2025-5.42`, `2025-5`, `2025`, `latest`
+- `2024-5.38.4`, `2024-5.38`, `2024-5`, `2024`
 - `2023-5.38.4`, `2023-5.38`, `2023-5`, `2023`
 - `2022-5.36.3`, `2022-5.36`, `2022-5`, `2022`
 - `2021-5.34.3`, `2021-5.34`, `2021-5`, `2021`
